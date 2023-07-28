@@ -11,15 +11,11 @@
 </head>
 
 <body>
-    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="main" style="width: 1000px;height:800px;"></div>
     <script>
         $(document).ready(function () {
-            // 基于准备好的dom，初始化echarts实例
             var myChart = echarts.init(document.getElementById('main'), "dark");
-
-
-            // 初始 option
+           
             option = {
                 title: {
                     text: '开发者项目中使用的编程语言数量与开发者人数的关联性'
@@ -54,22 +50,20 @@
                 ]
             };
 
-            //获取数据
+            
             $.getJSON("data.json", function (data) {
 
-                // fetchData(function (data) {
                 myChart.setOption({
                     xAxis: {
                         data: data.categories
                     },
                     series: [{
-                        // 根据名字对应到相应的系列
+                        
                         name: '人数',
                         data: data.data
                     }]
                 });
             });
-            // 使用刚指定的配置项和数据显示图表。
             myChart.setOption(option);
         });
     </script>
